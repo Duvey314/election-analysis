@@ -25,6 +25,8 @@ total_votes = 0
 #make a list for the cadidates names
 candidate_options = [ ]
 
+#create a dictionary to hold the candidates votes
+candidate_votes = {}
 
 #open the elections results and read the file
 with open(file_to_load) as election_data:
@@ -45,10 +47,25 @@ with open(file_to_load) as election_data:
       #create a list of candidates
       if candidate_name not in candidate_options:
          candidate_options.append(row[2])
+         candidate_votes[row[2]] = 0
+      
+      #add the vote to the candidates vote total
+      candidate_votes[row[2]] += 1
+      
+
+for candidate in candidate_votes:
+   #number of votes the candidate received
+   votes = candidate_votes[candidate]
+   #vote percentage of the candidate
+   vote_percentage = round(votes/total_votes*100,1)
+   #print the total
+   print(f"{candidate}: recevied {vote_percentage}% of the vote") 
+      
 
    
 print(total_votes)
 print(candidate_options)
+print(candidate_votes)
 
 # with open(file_to_save,"w") as election_data:
 #    election_data.write("Hello World")
