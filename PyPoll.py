@@ -22,6 +22,11 @@ file_to_save = os.path.join("analysis","election_analysis.txt")
 #set a variable to hold vote counts
 total_votes = 0
 
+#winners circle
+winning_total = 0
+winning_percentage = 0
+winning_candidate = ""
+
 #make a list for the cadidates names
 candidate_options = [ ]
 
@@ -52,21 +57,22 @@ with open(file_to_load) as election_data:
       #add the vote to the candidates vote total
       candidate_votes[row[2]] += 1
       
+#write the results to the file
+with open(file_to_save,"w") as election_data:
+   for candidate in candidate_votes:
+      #number of votes the candidate received
+      votes = candidate_votes[candidate]
 
-for candidate in candidate_votes:
-   #number of votes the candidate received
-   votes = candidate_votes[candidate]
-   #vote percentage of the candidate
-   vote_percentage = round(votes/total_votes*100,1)
-   #print the total
-   print(f"{candidate}: recevied {vote_percentage}% of the vote") 
+      #vote percentage of the candidate
+      vote_percentage = round(votes/total_votes*100,1)
       
+      if (votes > winning_total) and (vote_percentage > winning_percentage):
+         winning_total = votes
+         winning_percentage = vote_percentage 
+         winning_candidate = candidate
 
+      #print all data totals
+      election_data.write(f"{candidate}: recevied {vote_percentage}% of the vote\n") 
    
-print(total_votes)
-print(candidate_options)
-print(candidate_votes)
-
-# with open(file_to_save,"w") as election_data:
-#    election_data.write("Hello World")
-
+   #print winning candidate
+   election_data.write(f"The winning candidate is:{winning_candidate} who recevied {winning_percentage}% of the vote")
