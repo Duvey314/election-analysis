@@ -1,4 +1,8 @@
-Charles Casper Stockham: recevied 23.0% of the vote
-Diana DeGette: recevied 73.8% of the vote
-Raymon Anthony Doane: recevied 3.1% of the vote
-The winning candidate is:Diana DeGette who recevied 73.8% of the vote
+Charles Casper Stockham: 23.0% (85,213)
+Diana DeGette: 73.8% (272,892)
+Raymon Anthony Doane: 3.1% (11,606)
+-------------------------
+Winner: Diana DeGette
+Winning Vote Count: 272,892
+Winning Percentage: 73.8%
+-------------------------
